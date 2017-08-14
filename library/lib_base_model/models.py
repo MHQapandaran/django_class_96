@@ -4,6 +4,9 @@ from django.contrib.auth.models import User as DjangoUser
 # Create your models here.
 class Publisher(models.Model):
     name = models.CharField(max_length=32)
+    
+    def __str__(self):
+        return "PUblisher " + self.name
 
 
 class Book(models.Model):
@@ -12,6 +15,9 @@ class Book(models.Model):
     summary = models.TextField()
     publisher = models.ForeignKey(Publisher)
     borrow_record = models.ManyToManyField('User', through='Borrow')
+    
+    def __str__(self):
+        return "Book " + self.name + ": " + self.ISBN
     
 
 class Section(models.Model):
