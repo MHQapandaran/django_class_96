@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^base/', include('lib_base_model.url')),
+    url(r'^accounts/', include('accounts.url')),
     url(r'^admin/', admin.site.urls),
 ]
