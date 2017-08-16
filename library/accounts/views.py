@@ -8,6 +8,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+# handle login information
 def login_view(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -21,9 +22,12 @@ def login_view(request):
         #ERR
         return HttpResponse("Wrong username or password")
     
+#Log the user out
 def logout_view(request):
     logout(request)
+    return HttpResponse("Logged out")
     
+#Render login template
 def login_from_view(request):
     template = loader.get_template('accounts/login_form.html')
     return HttpResponse(template.render({}, request))
