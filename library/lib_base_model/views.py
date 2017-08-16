@@ -3,6 +3,9 @@ from django.http import HttpResponse
 
 from .models import Book
 
+
+from django.db.models import Q
+
 # Create your views here.
 
 def hello_world(request):
@@ -21,7 +24,12 @@ def get_book(request):
         
 
 def search_book(request):
-    pass
+    query = request.GET['q']
+    
+    list_book = Book.objects.filter(name__contains=query) | Book.objects.filter(summary__contains=query)
+    
+    return render(request, 'lib_base_model/book_list.html', {"book_list": list_book})
+    
 
 def reserve(request):
     pass

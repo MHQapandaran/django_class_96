@@ -3,7 +3,7 @@
 
 {% for book in book_list %}
 
-<h2> <a href="/base/book?id={{book.id}}"> {{ book.name }} </a></h2>
+<h2> <a href="{% url 'base:get_book' %}?id={{book.id}}"> {{ book.name }} </a></h2>
 
 <p> A book published by: {{book.publisher.name}} </p>
 
