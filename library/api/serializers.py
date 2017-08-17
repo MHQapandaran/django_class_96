@@ -41,9 +41,11 @@ class PublisherSerializer(serializers.ModelSerializer):
 
 class BookSerializer(serializers.ModelSerializer):
     
-    publisher = PublisherSerializer()
+    publisher_id = serializers.PrimaryKeyRelatedField(queryset=Publisher.objects, source="publisher")
+    
+    publisher= PublisherSerializer(read_only=True)
     
     class Meta:
         model = Book
-        fields = ('id', 'name', 'ISBN', 'summary', 'publisher')
+        fields = ('id', 'name', 'ISBN', 'summary', 'publisher_id', 'publisher')
 

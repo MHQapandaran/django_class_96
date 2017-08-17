@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'lib_base_model',
     'accounts',
     'api',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,3 +126,11 @@ STATIC_URL = '/static/'
 
 
 LOGIN_URL = '/accounts/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
